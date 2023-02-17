@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDatePicker</title>
+    <link rel="stylesheet" href="./css/date-picker.css" />
+  </head>
+  <body>
+    <div>
+      <input type="date" name="" id="datePicker" />
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="./js/date-picker.js"></script>
+    <script>
+      let datePicker;
+      $(() => {
+        datePicker = $("#datePicker").pDatePicker();
+      });
+    </script>
+  </body>
+</html>
