@@ -1,0 +1,215 @@
+.date-picker-wrapper {
+  position: relative;
+  --background-color: #fff;
+  --separator-color: #e1e1e1;
+  --tile-color: var(
+  --separator-color);
+  --text-color: #616161;
+  --shadow-color: #ddd;
+  --primary-color: #03a9f4;
+  --on-primary-color: #fff;
+  --today-border-color: #999;
+  --sunday-color: #f44336;
+}
+.date-picker-wrapper.dark {
+    position: relative;
+  --background-color: #424242;
+  --separator-color: #555;
+  --text-color: #ccc;
+  --shadow-color: #333;
+  --primary-color: #03a9f4;
+  --on-primary-color: #fff;
+  --today-border-color: #ccc;
+  --sunday-color: #f44336;
+}
+
+.date-picker {
+  position: relative;
+  width: 100px;
+  padding: 10px 30px 10px 10px;
+}
+
+.date-picker-date-container {
+  position: absolute;
+  top: 100%;
+  background-color: var(--background-color);
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 1px 1px 10px var(--shadow-color);
+  padding: 0.75rem;
+  display: none;
+  z-index: 1;
+}
+
+.date-picker-input {
+  padding: 0.5rem 1rem;
+}
+
+.date-picker-date-container.show {
+  display: block;
+}
+
+.date-picker-date-container * {
+  user-select: none;
+}
+
+.date-picker-button-primary {
+  padding: 4px 8px;
+  min-width: 4rem;
+  margin-left: auto;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--on-primary-color);
+  border-radius: 4px;
+}
+
+.date-picker-footer {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--separator-color);
+  display: flex;
+}
+
+.date-picker-header {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  box-sizing: border-box;
+  place-content: center;
+  border-bottom: 1px solid var(--separator-color);
+}
+
+.date-picker-header-info {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker-header-info-prev:hover,
+.date-picker-header-info-next:hover {
+  background-color: var(--separator-color);
+}
+
+.date-picker-header-info-prev,
+.date-picker-header-info-next {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  padding-bottom: 8px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.date-picker-header-info-next.hidden,
+.date-picker-header-info-prev.hidden {
+  opacity: 0;
+  z-index: -1;
+}
+
+.date-picker-table-header,
+.date-picker-selector {
+  height: calc(100% - 2rem);
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  place-content: center;
+}
+
+.date-picker-table-header {
+  padding-bottom: 8px;
+}
+
+.date-picker-table-header.hidden {
+  display: none;
+}
+
+.date-item,
+.date-header,
+.month-item,
+.year-item {
+  display: grid;
+  place-content: center;
+  background-color: var(--tile-color);
+  height: 1.75rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: var(--text-color);
+  font-weight: 700;
+  position: relative;
+}
+
+.month-item,
+.year-item {
+  padding: 5px;
+  min-width: 75px;
+}
+
+.date-item,
+.date-header {
+  width: 1.75rem;
+}
+
+.date-header {
+  background-color: transparent;
+}
+
+.date-item,
+.month-item,
+.year-item {
+  cursor: pointer;
+}
+
+.date-item.selected,
+.month-item.selected,
+.year-item.selected {
+  background-color: var(--primary-color);
+  color: var(--on-primary-color) !important;
+}
+
+.date-item.marked:after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #ff5722;
+  border-radius: 100%;
+  margin-inline: auto;
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+}
+
+.date-item.disabled,
+.month-item.disabled,
+.year-item.disabled {
+  opacity: 0.6;
+  background-color: transparent;
+}
+
+.date-item.date-today,
+.month-item.date-today,
+.year-item.date-today {
+  border: 1px solid var(--today-border-color);
+}
+
+.date-picker-sunday-first .date-item:nth-child(7n + 1),
+.date-picker-sunday-first .date-header:nth-child(7n + 1) {
+  color: var(--sunday-color);
+}
+
+.date-picker-monday-first .date-header:nth-child(7n),
+.date-picker-monday-first .date-item:nth-child(7n) {
+  color: var(--sunday-color) !important;
+}
+
+.date-item:hover,
+.month-item:hover,
+.year-item:hover {
+  background-color: var(--shadow-color);
+}
