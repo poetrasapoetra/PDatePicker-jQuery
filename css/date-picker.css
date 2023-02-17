@@ -1,9 +1,13 @@
+.date-picker-wrapper * {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 .date-picker-wrapper {
   position: relative;
   --background-color: #fff;
   --separator-color: #e1e1e1;
-  --tile-color: var(
-  --separator-color);
+  --tile-color: var(--separator-color);
   --text-color: #616161;
   --shadow-color: #ddd;
   --primary-color: #03a9f4;
@@ -12,7 +16,7 @@
   --sunday-color: #f44336;
 }
 .date-picker-wrapper.dark {
-    position: relative;
+  position: relative;
   --background-color: #424242;
   --separator-color: #555;
   --text-color: #ccc;
