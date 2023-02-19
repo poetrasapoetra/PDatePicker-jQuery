@@ -37,7 +37,7 @@
       mondayFirst: false,
       type: this.element.attr("type") ?? "date",
       showTodayButton: true,
-      classTheme: null,
+      themeClass: null,
     };
     this.init(options);
   };
@@ -382,8 +382,8 @@
       } else {
         container.addClass("date-picker-sunday-first");
       }
-      if (_this.options.classTheme) {
-        wrapper.addClass(_this.options.classTheme);
+      if (_this.options.themeClass) {
+        wrapper.addClass(_this.options.themeClass);
       }
       const input = $("<input>")
         .attr("type", "text")
