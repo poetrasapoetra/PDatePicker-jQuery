@@ -35,7 +35,7 @@
       selected: null,
       lang: "en",
       mondayFirst: false,
-      type: this.element.attr("type"),
+      type: this.element.attr("type") ?? "date",
       showTodayButton: true,
       classTheme: null,
     };
@@ -103,9 +103,9 @@
           let disabled;
           if (today.getFullYear() == d) {
             additionalClass += " date-today";
-            if (i == picker.selectedYear) {
-              additionalClass += " selected";
-            }
+          }
+          if (d == picker.selectedYear) {
+            additionalClass += " selected";
           }
           if (d < minYear || d > maxYear) {
             additionalClass += " disabled";
@@ -115,10 +115,12 @@
             .addClass(`year-item ${additionalClass}`)
             .text(d);
           if (!disabled) {
-            itm.on("click", () => {
+            itm.on("click", function () {
               if (picker.options.type == "year") {
                 picker.setSelectedDate(new Date(d, 0, 1));
                 picker.hide();
+                container.find(".year-item.selected").removeClass("selected");
+                $(this).addClass("selected");
               } else {
                 // prevent race condition with $(window).on("click")
                 setTimeout(() => {
@@ -182,9 +184,12 @@
             if (today.getMonth() == i) {
               additionalClass += " date-today";
             }
-            if (i == picker.selectedMonthIndex) {
-              additionalClass += " selected";
-            }
+          }
+          if (
+            i == picker.selectedMonthIndex &&
+            current_year == picker.selectedYear
+          ) {
+            additionalClass += " selected";
           }
           if (i < minMonth || i > maxMonth) {
             additionalClass += " disabled";
@@ -194,10 +199,12 @@
             .addClass(`month-item ${additionalClass}`)
             .text(d);
           if (!disabled) {
-            itm.on("click", () => {
+            itm.on("click", function (evt) {
               if (picker.options.type == "month") {
                 picker.setSelectedDate(new Date(current_year, i, 1));
                 picker.hide();
+                container.find(".month-item.selected").removeClass("selected");
+                $(this).addClass("selected");
               } else {
                 // prevent race condition with $(window).on("click")
                 setTimeout(() => {
@@ -342,7 +349,7 @@
             const sel = new Date(current_year, month_index, d);
             picker.setSelectedDate(sel);
             picker.hide();
-            $(".date-item.selected").removeClass("selected");
+            container.find(".date-item.selected").removeClass("selected");
             $(this).addClass("selected");
           });
           return div;
@@ -491,7 +498,6 @@
     },
     next: function () {
       let next;
-      console.log(this.currentType);
       switch (this.currentType) {
         case "year":
           next = new Date(this.currentPreview.getFullYear() + 10, 0, 1);

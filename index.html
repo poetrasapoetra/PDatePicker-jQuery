@@ -16,7 +16,19 @@
     <script>
       let datePicker;
       $(() => {
-        datePicker = $("#datePicker").pDatePicker();
+        datePicker = $("#datePicker").pDatePicker({
+          range: {
+            startDate: new Date(2020, 0, 1), // default null
+            // endDate: new Date(), // default null
+          },
+          showDate: new Date(2023, 1), // show picker to Feb 2023, default show current month
+          selected: new Date(2023, 1, 2), // selected date to 2nd Feb 2023 , default null
+          lang: "id", // set language to Bahasa Indonesia, defaut en
+          // type : "month", // set date piker view to date, default date or element type attribute. Available "date", "month", "year"
+          showTodayButton: true, // show select current date button, default true
+          classTheme: "dark", // add class dark to wrapper for theming, default null. Another class may be added in css
+          mondayFirst: true, // set first column to monday, default false (sunday is first column)
+        });
       });
     </script>
   </body>

@@ -82,6 +82,7 @@
   box-sizing: border-box;
   place-content: center;
   border-bottom: 1px solid var(--separator-color);
+  color: var(--text-color);
 }
 
 .date-picker-header-info {
