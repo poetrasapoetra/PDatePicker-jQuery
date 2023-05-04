@@ -303,7 +303,7 @@
       } else {
         // if skip has no item than add 6 from prevoius
         const prev = new Date(current_year, current_month, -6);
-        console.log(prev);
+        // console.log(prev);
         for (var i = prev.getDate(), j = 0; j < 6; j++) {
           skip.push(i++);
         }
