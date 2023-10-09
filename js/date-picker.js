@@ -38,6 +38,7 @@
       type: this.element.attr("type") ?? "date",
       showTodayButton: true,
       themeClass: null,
+      inputClass: "",
     };
     this.init(options);
   };
@@ -387,7 +388,7 @@
       }
       const input = $("<input>")
         .attr("type", "text")
-        .addClass("date-picker-input")
+        .addClass(`date-picker-input ${_this.options.inputClass}`)
         .appendTo(wrapper)
         .on("focus", function (evt) {
           _this.show.bind(_this)();
